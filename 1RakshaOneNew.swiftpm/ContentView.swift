@@ -528,38 +528,6 @@ struct SOSAlertView: View {
                 }
             }
 
-            // Recording Button
-            Button(action: {
-                if emergencyManager.isRecording {
-                    emergencyManager.stopAudioRecording()
-                } else {
-                    emergencyManager.startAudioRecording()
-                }
-            }) {
-                HStack(spacing: 8) {
-                    Image(
-                        systemName: emergencyManager.isRecording
-                            ? "stop.circle.fill" : "mic.circle.fill"
-                    )
-                    .font(.title3)
-                    Text(emergencyManager.isRecording ? "Stop Recording" : "Start Recording")
-                        .font(.subheadline.bold())
-                }
-                .foregroundColor(.white)
-                .padding(.horizontal, 24)
-                .padding(.vertical, 12)
-                .background(
-                    Capsule().fill(
-                        emergencyManager.isRecording ? Color.gray : Color.red.opacity(0.8))
-                )
-            }
-
-            if emergencyManager.isRecording {
-                Text(emergencyManager.recordingStatus)
-                    .font(.caption)
-                    .foregroundColor(.red)
-            }
-
             Spacer()
         }
         .padding()
